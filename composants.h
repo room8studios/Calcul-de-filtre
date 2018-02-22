@@ -11,6 +11,6 @@ typedef float frequence;
 typedef frequence frequence;
 typedef int ordre;
 typedef ordre ordre;
-enum type_filtre{PASSE_BAS, PASSE_HAUT, PASEE_BANDE};//passe_bas=0, passe_haut=1,passe_bande=2
+typedef enum {PASSE_BAS, PASSE_HAUT, PASEE_BANDE} type_filtre;//passe_bas=0, passe_haut=1,passe_bande=2
 
 #endif // COMPOSANTS_H_INCLUDED
