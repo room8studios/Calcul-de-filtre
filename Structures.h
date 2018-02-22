@@ -1,0 +1,6 @@
+#ifndef STRUCTURES_INCLUDED
+#define STRUCTURES_INCLUDED
+
+typedef enum{AUCUN, RESISTANCE, CONDENSATEUR, BOBINE}Element_prioritaire;
+
+#endif // STRUCTURES_INCLUDED

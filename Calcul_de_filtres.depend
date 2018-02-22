@@ -1,16 +1,26 @@
 # depslib dependency file v1.0
-1519307856 source:/Users/florianvie/Downloads/Projet_Algo/Projet/determination.c
-	"dertermination.h"
+1519308097 source:/Users/florianvie/Downloads/Projet_Algo/Projet/determination.c
+	"determination.h"
+
+1519308037 /Users/florianvie/Downloads/Projet_Algo/Projet/dertermination.h
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
-
-1519307936 /Users/florianvie/Downloads/Projet_Algo/Projet/dertermination.h
 	"composants.h"
 
-1519307927 /Users/florianvie/Downloads/Projet_Algo/Projet/composants.h
+1519308515 /Users/florianvie/Downloads/Projet_Algo/Projet/composants.h
 
-1519288218 source:/Users/florianvie/Downloads/Projet_Algo/Projet/main.c
+1519308209 source:/Users/florianvie/Downloads/Projet_Algo/Projet/main.c
 	<stdio.h>
 	<stdlib.h>
+	"determination.h"
+
+1519308892 /Users/florianvie/Downloads/Projet_Algo/Projet/determination.h
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"composants.h"
+	"Structures.h"
+
+1519308755 /Users/florianvie/Downloads/Projet_Algo/Projet/Structures.h
 
