@@ -31,10 +31,16 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Interface.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Interface.h" />
+		<Unit filename="Structures.h" />
 		<Unit filename="composants.h" />
 		<Unit filename="determination.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="determination.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
