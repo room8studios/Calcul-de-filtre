@@ -31,6 +31,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Calcul_filtre.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Calcul_filtre.h" />
+		<Unit filename="Initialisation.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Initialisation.h" />
 		<Unit filename="Interface.c">
 			<Option compilerVar="CC" />
 		</Unit>

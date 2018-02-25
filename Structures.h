@@ -1,7 +1,19 @@
 #ifndef STRUCTURES_INCLUDED
 #define STRUCTURES_INCLUDED
 
+#include "composants.h"
+
 typedef enum{AUCUN, RESISTANCE, CONDENSATEUR, BOBINE}Element_prioritaire;
 typedef enum{FAUX, VRAI}Booleen;
+
+typedef struct
+{
+    int ordre;
+    type_filtre type_filtre;
+    frequence fc;
+    frequence fr;
+    Element_prioritaire Ele_prio;
+}filtre;
+
 
 #endif // STRUCTURES_INCLUDED

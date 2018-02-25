@@ -1,10 +1,13 @@
 #include "Interface.h"
 
-void saisie_utili(int nummero)
+void saisie_filtre_souhaite(filtre *filtre)
 {
-    int i=0;
-    printf("Voulez vous saisir un autre composant ?");
-    printf("Saisir le composant numero %i", i);
+    printf("==========Choix d'un filtre==============");
+    printf("Voulez souhaitez un filtre d'ordre ? \n");
+    scanf("%i", &filtre->ordre);
+    printf("Voulez souhaitez quel type de filtre ? \n");
+    printf("PASSE_BAS=0 \n PASSE_HAUT=1 \n PASEE_BANDE=2 \n");
+    scanf("%i", &filtre->type_filtre);
 
 };
 
@@ -14,7 +17,7 @@ resistance saisie_resistances(int i)
     Booleen booleen=FAUX;
 
     do{
-        printf("Saisir la resistance numero R%i", i);
+        printf("Saisir la resistance numero R%i \n", i);
         scanf("%f", &R);
 
         if(R>5)
@@ -23,7 +26,7 @@ resistance saisie_resistances(int i)
         }
         else
         {
-            printf("Valeur de la resistance est invalide ou trop faible");
+            printf("Valeur de la resistance invalide ou trop faible \n");
         }
     }while(booleen==VRAI);
 
@@ -36,7 +39,7 @@ capacite saisie_condensateur(int i)
     Booleen booleen=FAUX;
 
     do{
-        printf("Saisir le condensateur numero C%i", i);
+        printf("Saisir le condensateur numero C%i \n", i);
         scanf("%f", &C);
 
         if(C>5)
@@ -45,7 +48,7 @@ capacite saisie_condensateur(int i)
         }
         else
         {
-            printf("Valeur du condensateur est invalide ou trop faible");
+            printf("Valeur du condensateur invalide ou trop faible \n");
         }
     }while(booleen==VRAI);
 
@@ -58,7 +61,7 @@ inductance saisie_inductance(int i)
     Booleen booleen=FAUX;
 
     do{
-        printf("Saisir le condensateur numero C%i", i);
+        printf("Saisir le condensateur numero C%i \n", i);
         scanf("%f", &L);
 
         if(L>5)
@@ -67,9 +70,166 @@ inductance saisie_inductance(int i)
         }
         else
         {
-            printf("Valeur du condensateur est invalide ou trop faible");
+            printf("Valeur du condensateur invalide ou trop faible \n");
         }
     }while(booleen==VRAI);
 
     return L;
 };
+
+void montage_choisi(filtre filtre)
+{
+
+    if(filtre.ordre==1)
+    {
+        switch (filtre.type_filtre) //Filtres du 1er ordre
+        {
+            case PASSE_BAS :
+            {
+                printf("               --------- \n");
+                printf("---------------|   R   |------------------------ \n");
+                printf("|              ---------        |              | \n");
+                printf("|                               |              | \n");
+                printf("|                               |              | \n");
+                printf("|                             -----            | \n");
+                printf("|                             |   |            | \n");
+                printf("Ve                            | C |            Vs \n");
+                printf("|                             |   |            | \n");
+                printf("|                             -----            | \n");
+                printf("|                               |              | \n");
+                printf("|                               |              | \n");
+                printf("|                               |              | \n");
+                printf("------------------------------------------------ \n");
+
+                break;
+            }
+            case PASSE_HAUT :
+            {
+                printf("               --------- \n");
+                printf("---------------|   C   |------------------------ \n");
+                printf("|              ---------        |              | \n");
+                printf("|                               |              | \n");
+                printf("|                               |              | \n");
+                printf("|                             -----            | \n");
+                printf("|                             |   |            | \n");
+                printf("Ve                            | R |            Vs \n");
+                printf("|                             |   |            | \n");
+                printf("|                             -----            | \n");
+                printf("|                               |              | \n");
+                printf("|                               |              | \n");
+                printf("|                               |              | \n");
+                printf("------------------------------------------------ \n");
+
+                break;
+            }
+            case PASSE_BANDE :
+            {
+                printf("Impossible pour un filtre du premier ordre passif");
+                break;
+            }
+            case COUPE_BANDE :
+            {
+                printf("Impossible pour un filtre du premier ordre passif");
+                break;
+            }
+        }
+    }
+    else if(filtre.ordre==2) //Filtres du Second ordre
+    {
+        switch (filtre.type_filtre)
+        {
+            case PASSE_BAS :
+            {
+                printf("                                  <----Vs----- \n");
+                printf("               ---------            --------- \n");
+                printf("---------------|   L   |------------|   C   |-------- \n");
+                printf("|              ---------            ---------       | \n");
+                printf("|                                                   | \n");
+                printf("|                                                   | \n");
+                printf("|                                                 ----- \n");
+                printf("|                                                 |   | \n");
+                printf("Ve                                                | R | \n");
+                printf("|                                                 |   | \n");
+                printf("|                                                 ----- \n");
+                printf("|                                                   | \n");
+                printf("|                                                   | \n");
+                printf("|                                                   | \n");
+                printf("----------------------------------------------------- \n");
+
+                break;
+            }
+            case PASSE_HAUT :
+            {
+                printf("             <----Vs----- \n");
+                printf("               ---------            --------- \n");
+                printf("---------------|   L   |------------|   C   |-------- \n");
+                printf("|              ---------            ---------       | \n");
+                printf("|                                                   | \n");
+                printf("|                                                   | \n");
+                printf("|                                                 ----- \n");
+                printf("|                                                 |   | \n");
+                printf("Ve                                                | R | \n");
+                printf("|                                                 |   | \n");
+                printf("|                                                 ----- \n");
+                printf("|                                                   | \n");
+                printf("|                                                   | \n");
+                printf("|                                                   | \n");
+                printf("----------------------------------------------------- \n");
+
+                break;
+            }
+            case PASSE_BANDE :
+            {
+                printf("               ---------            --------- \n");
+                printf("---------------|   L   |------------|   C   |------------------ \n");
+                printf("|              ---------            ---------       |              | \n");
+                printf("|                                                   |              | \n");
+                printf("|                                                   |              | \n");
+                printf("|                                                 -----            | \n");
+                printf("|                                                 |   |            | \n");
+                printf("Ve                                                | R |            Vs \n");
+                printf("|                                                 |   |            | \n");
+                printf("|                                                 -----            | \n");
+                printf("|                                                   |              | \n");
+                printf("|                                                   |              | \n");
+                printf("|                                                   |              | \n");
+                printf("-------------------------------------------------------------------- \n");
+
+                break;
+            }
+            case COUPE_BANDE :
+            {
+                printf("            <----------------Vs---------------- \n");
+                printf("               ---------            --------- \n");
+                printf("---------------|   L   |------------|   C   |-------- \n");
+                printf("|              ---------            ---------       | \n");
+                printf("|                                                   | \n");
+                printf("|                                                   | \n");
+                printf("|                                                 ----- \n");
+                printf("|                                                 |   | \n");
+                printf("Ve                                                | R | \n");
+                printf("|                                                 |   | \n");
+                printf("|                                                 ----- \n");
+                printf("|                                                   | \n");
+                printf("|                                                   | \n");
+                printf("|                                                   | \n");
+                printf("----------------------------------------------------- \n");
+
+                break;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
