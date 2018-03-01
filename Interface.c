@@ -221,6 +221,139 @@ void montage_choisi(filtre filtre)
     }
 }
 
+void montage_determine_exact(filtre filtre)
+{
+
+    if(filtre.ordre==1)
+    {
+        switch (filtre.type_filtre) //Filtres du 1er ordre
+        {
+            case PASSE_BAS :
+            {
+                printf("               ---------------- \n");
+                printf("---------------|   R=%f Ohms  |----------------------------- \n", filtre.compo_exact.R_exact);
+                printf("|              ----------------             |              | \n");
+                printf("|                                           |              | \n");
+                printf("|                                           |              | \n");
+                printf("|                                       ----------         | \n");
+                printf("|                                       |        |         | \n");
+                printf("Ve                                      | C=%f F |         Vs \n", filtre.compo_exact.C_exact);
+                printf("|                                       |        |         | \n");
+                printf("|                                       ----------         | \n");
+                printf("|                                           |              | \n");
+                printf("|                                           |              | \n");
+                printf("|                                           |              | \n");
+                printf("------------------------------------------------------------ \n");
+
+                break;
+            }
+            case PASSE_HAUT :
+            {
+                printf("               -------------\n");
+                printf("---------------|   C=%f F  |----------------------------------- \n", filtre.compo_exact.C_exact);
+                printf("|              -------------                |                 | \n");
+                printf("|                                           |                 | \n");
+                printf("|                                           |                 | \n");
+                printf("|                                       -------------         | \n");
+                printf("Ve                                      | R=%f Ohms |         Vs \n", filtre.compo_exact.R_exact);
+                printf("|                                       -------------         | \n");
+                printf("|                                           |                 | \n");
+                printf("|                                           |                 | \n");
+                printf("|                                           |                 | \n");
+                printf("--------------------------------------------------------------- \n");
+
+                break;
+            }
+            case PASSE_BANDE :
+            {
+                printf("Impossible pour un filtre du premier ordre passif");
+                break;
+            }
+            case COUPE_BANDE :
+            {
+                printf("Impossible pour un filtre du premier ordre passif");
+                break;
+            }
+        }
+    }
+    else if(filtre.ordre==2) //Filtres du Second ordre
+    {
+        switch (filtre.type_filtre)
+        {
+            case PASSE_BAS :
+            {
+                printf("                                       <------Vs-------- \n");
+                printf("               --------------            -------------- \n");
+                printf("---------------|   L=%f H   |------------|   C=%f F   |---------- \n", filtre.compo_exact.L_exact, filtre.compo_exact.C_exact);
+                printf("|              --------------            --------------         | \n");
+                printf("|                                                               | \n");
+                printf("|                                                               | \n");
+                printf("|                                                         ------------- \n");
+                printf("Ve                                                        | R=%f Ohms | \n", filtre.compo_exact.R_exact);
+                printf("|                                                         ------------- \n");
+                printf("|                                                               | \n");
+                printf("|                                                               | \n");
+                printf("|                                                               | \n");
+                printf("----------------------------------------------------------------- \n");
+
+                break;
+            }
+            case PASSE_HAUT :
+            {
+                printf("             <----Vs---------- \n");
+                printf("               --------------            -------------- \n");
+                printf("---------------|   L=%f H   |------------|   C=%f F   |---------- \n", filtre.compo_exact.L_exact, filtre.compo_exact.C_exact);
+                printf("|              --------------            --------------         | \n");
+                printf("|                                                               | \n");
+                printf("|                                                               | \n");
+                printf("|                                                         ------------- \n");
+                printf("Ve                                                        | R=%f Ohms | \n", filtre.compo_exact.R_exact);
+                printf("|                                                         ------------- \n");
+                printf("|                                                               | \n");
+                printf("|                                                               | \n");
+                printf("|                                                               | \n");
+                printf("----------------------------------------------------------------- \n");
+
+                break;
+            }
+            case PASSE_BANDE :
+            {
+                printf("               --------------            -------------- \n");
+                printf("---------------|   L=%f H   |------------|   C=%f F   |--------------------------- \n", filtre.compo_exact.L_exact, filtre.compo_exact.C_exact);
+                printf("|              --------------            --------------       |                  | \n");
+                printf("|                                                             |                  | \n");
+                printf("|                                                             |                  | \n");
+                printf("|                                                       -------------            | \n");
+                printf("Ve                                                      | R=%f Ohms |            Vs \n", filtre.compo_exact.R_exact);
+                printf("|                                                       -------------            | \n");
+                printf("|                                                             |                  | \n");
+                printf("|                                                             |                  | \n");
+                printf("|                                                             |                  | \n");
+                printf("---------------------------------------------------------------------------------- \n");
+
+                break;
+            }
+            case COUPE_BANDE :
+            {
+                printf("             <-------------------Vs--------------------- \n");
+                printf("               --------------            -------------- \n");
+                printf("---------------|   L=%f H   |------------|   C=%f F   |---------- \n", filtre.compo_exact.L_exact, filtre.compo_exact.C_exact);
+                printf("|              --------------            --------------         | \n");
+                printf("|                                                               | \n");
+                printf("|                                                               | \n");
+                printf("|                                                         ------------- \n");
+                printf("Ve                                                        | R=%f Ohms | \n", filtre.compo_exact.R_exact);
+                printf("|                                                         ------------- \n");
+                printf("|                                                               | \n");
+                printf("|                                                               | \n");
+                printf("|                                                               | \n");
+                printf("----------------------------------------------------------------- \n");
+
+                break;
+            }
+        }
+    }
+}
 
 
 

@@ -1,6 +1,6 @@
 #include "Calcul_filtre.h"
 
-void frequence_coupure(filtre *filtre, resistance R, capacite C, inductance L)
+void frequence_coupure(filtre *filtre)
 {
     ///Faire les cas ou R, C, L sont nuls
     float omega0=0, omegar=0;
@@ -16,18 +16,18 @@ void frequence_coupure(filtre *filtre, resistance R, capacite C, inductance L)
 
                 //Calcul de la pulsation de coupure
                 //On regarde l'ŽlŽment prioritaire
-                if(filtre->Ele_prio==CONDENSATEUR)
+                if((filtre->Ele_prio==CONDENSATEUR) || (filtre->Ele_prio==AUCUN))
                 {
-                    omega0=1/(R*C);
+                    omega0=1/((filtre->compo_exact.R_exact)*(filtre->compo_exact.C_exact));
                 }
                 else
                 {
-                    omega0=R/C;
+                    omega0=filtre->compo_exact.R_exact/filtre->compo_exact.L_exact;
                 }
 
                 //Calcul de la frŽquence de coupure
                 filtre->fc=omega0/(2*M_PI);
-                printf("La frequence de coupeure est %f Hz", filtre->fc);
+                printf("La frequence de coupure est %f Hz", filtre->fc);
 
                 break;
             }
@@ -39,16 +39,16 @@ void frequence_coupure(filtre *filtre, resistance R, capacite C, inductance L)
                 //On regarde l'ŽlŽment prioritaire
                 if(filtre->Ele_prio==CONDENSATEUR)
                 {
-                    omega0=1/(R*C);
+                    omega0=1/((filtre->compo_exact.R_exact)*(filtre->compo_exact.C_exact));
                 }
                 else
                 {
-                    omega0=R/C;
+                    omega0=filtre->compo_exact.R_exact/filtre->compo_exact.C_exact;
                 }
 
                 //Calcul de la frŽquence de coupure
                 filtre->fc=omega0/(2*M_PI);
-                printf("La frequence de coupeure est %f Hz", filtre->fc);
+                printf("La frequence de coupure est %f Hz", filtre->fc);
 
                 break;
             }
@@ -65,17 +65,17 @@ void frequence_coupure(filtre *filtre, resistance R, capacite C, inductance L)
         {
             case PASSE_BAS :
             {
-                printf("On est en presence d'un filtre passe haut d'ordre %i\n", filtre->ordre);
+                printf("On est en presence d'un filtre passe bas d'ordre %i\n", filtre->ordre);
 
                 //Calcul de la pulsation de coupure
-                omega0=1/sqrt(L*C);
+                omega0=1/sqrt(filtre->compo_exact.L_exact*filtre->compo_exact.C_exact);
 
                 //Calcul de la frŽquence de coupure
                 filtre->fc=omega0/(2*M_PI);
-                printf("La frequence de coupeure est %f Hz", filtre->fc);
+                printf("La frequence de coupure est %f Hz", filtre->fc);
 
                 //Calcul de m
-                filtre->m=(1/2)*R*sqrt(C/L);
+                filtre->m=(1/2)*filtre->compo_exact.R_exact*sqrt(filtre->compo_exact.C_exact/filtre->compo_exact.L_exact);
 
                 //Calcul de pulsation de rŽsonnance
                 omegar=omega0*sqrt(1-2*pow(filtre->m, 2));
@@ -91,14 +91,14 @@ void frequence_coupure(filtre *filtre, resistance R, capacite C, inductance L)
                 printf("On est en presence d'un filtre passe haut d'ordre %i\n", filtre->ordre);
 
                 //Calcul de la pulsation de coupure
-                omega0=1/sqrt(L*C);
+                omega0=1/sqrt(filtre->compo_exact.L_exact*filtre->compo_exact.C_exact);
 
                 //Calcul de la frŽquence de coupure
                 filtre->fc=omega0/(2*M_PI);
-                printf("La frequence de coupeure est %f Hz", filtre->fc);
+                printf("La frequence de coupure est %f Hz", filtre->fc);
 
                 //Calcul de m
-                filtre->m=(1/2)*R*sqrt(C/L);
+                filtre->m=(1/2)*filtre->compo_exact.R_exact*sqrt(filtre->compo_exact.C_exact/filtre->compo_exact.L_exact);
 
                 //Calcul de pulsation de rŽsonnance
                 omegar=omega0/sqrt(1-2*pow(filtre->m, 2));
@@ -111,17 +111,17 @@ void frequence_coupure(filtre *filtre, resistance R, capacite C, inductance L)
             }
             case PASSE_BANDE :
             {
-                printf("On est en presence d'un filtre passe haut d'ordre %i\n", filtre->ordre);
+                printf("On est en presence d'un filtre passe bande d'ordre %i\n", filtre->ordre);
 
                 //Calcul de la pulsation de coupure
-                omega0=1/sqrt(L*C);
+                omega0=1/sqrt(filtre->compo_exact.L_exact*filtre->compo_exact.C_exact);
 
                 //Calcul de la frŽquence de coupure
                 filtre->fc=omega0/(2*M_PI);
-                printf("La frequence de coupeure est %f Hz", filtre->fc);
+                printf("La frequence de coupure est %f Hz", filtre->fc);
 
                 //Calcul de m
-                filtre->m=(1/2)*R*sqrt(C/L);
+                filtre->m=(1/2)*filtre->compo_exact.R_exact*sqrt(filtre->compo_exact.C_exact/filtre->compo_exact.L_exact);
 
                 //Calcul de pulsation de rŽsonnance
                 omegar=omega0/sqrt(1-2*pow(filtre->m, 2));
@@ -134,17 +134,17 @@ void frequence_coupure(filtre *filtre, resistance R, capacite C, inductance L)
             }
             case COUPE_BANDE :
             {
-                printf("On est en presence d'un filtre passe haut d'ordre %i\n", filtre->ordre);
+                printf("On est en presence d'un filtre coupe bande d'ordre %i\n", filtre->ordre);
 
                 //Calcul de la pulsation de coupure
-                omega0=1/sqrt(L*C);
+                omega0=1/sqrt(filtre->compo_exact.L_exact*filtre->compo_exact.C_exact);
 
                 //Calcul de la frŽquence de coupure
                 filtre->fc=omega0/(2*M_PI);
-                printf("La frequence de coupeure est %f Hz", filtre->fc);
+                printf("La frequence de coupure est %f Hz", filtre->fc);
 
                 //Calcul de m
-                filtre->m=(1/2)*R*sqrt(C/L);
+                filtre->m=(1/2)*filtre->compo_exact.R_exact*sqrt(filtre->compo_exact.C_exact/filtre->compo_exact.L_exact);
 
                 //Calcul de pulsation de rŽsonnance
                 omegar=omega0/sqrt(1-2*pow(filtre->m, 2));

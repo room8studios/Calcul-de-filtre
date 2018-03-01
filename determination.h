@@ -8,7 +8,7 @@
 #include "Structures.h"
 
 
-void calcul_composant_exact(filtre filtre, capacite*C, resistance*R, inductance*L);
+void calcul_composant_exact(filtre *filtre);
 void calcul_composant_standard();
 
 #endif // DETERMINATION_H_INCLUDED

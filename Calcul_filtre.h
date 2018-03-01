@@ -6,6 +6,6 @@
 #include "composants.h"
 #include <math.h>
 
-void frequence_coupure(filtre *filtre, resistance R, capacite C, inductance L);
+void frequence_coupure(filtre *filtre);
 
 #endif // CALCUL_FILTRE_H_INCLUDED

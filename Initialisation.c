@@ -8,4 +8,7 @@ void Initialisation_filtre(filtre *filtre)
     filtre->fr=0;
     filtre->m=0;
     filtre->Ele_prio=CONDENSATEUR;
+    filtre->compo_exact.R_exact=0;
+    filtre->compo_exact.C_exact=0;
+    filtre->compo_exact.L_exact=0;
 };
