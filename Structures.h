@@ -13,6 +13,7 @@ typedef struct
     frequence fc;
     frequence fr;
     Element_prioritaire Ele_prio;
+    float m;
 }filtre;
 
 
