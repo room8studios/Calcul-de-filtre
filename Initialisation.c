@@ -11,4 +11,14 @@ void Initialisation_filtre(filtre *filtre)
     filtre->compo_exact.R_exact=0;
     filtre->compo_exact.C_exact=0;
     filtre->compo_exact.L_exact=0;
+    filtre->compo_aproxi.taille_R_aproxi=0;
+    filtre->compo_aproxi.taille_C_aproxi=0;
+    filtre->compo_aproxi.taille_L_aproxi=0;
 };
+
+void Liberer_filtre(filtre *filtre)
+{
+    free(filtre->compo_aproxi.R_aproxi);
+    free(filtre->compo_aproxi.C_aproxi);
+    free(filtre->compo_aproxi.L_aproxi);
+}

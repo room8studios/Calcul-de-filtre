@@ -43,6 +43,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Interface.h" />
+		<Unit filename="Pile.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Pile.h" />
 		<Unit filename="Structures.h" />
 		<Unit filename="composants.h" />
 		<Unit filename="determination.c">

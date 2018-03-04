@@ -3,6 +3,7 @@
 void calcul_composant_exact(filtre *filtre)
 {
     capacite C_defaut=33*pow(10,-9);
+
     if(filtre->Ele_prio==AUCUN)
     {
         filtre->compo_exact.C_exact=C_defaut;
@@ -76,7 +77,79 @@ void calcul_composant_exact(filtre *filtre)
     }
 };
 
-void calcul_composant_standard()
+void calcul_composant_standard(filtre *filtre)
 {
+    int tab_deca[]={600,470,330,220,150,100}, i=0, a=0, tmp_R=0, quotient=0, num_decade; //tab_deca => Décade E6 ±10%
+    Pile p;
+    ///Faire attention si pile est pleine faire une condition ?
+    ///Faire ultra gaffe à la taille de la pile vérifier si on peut pas faire une pile avec allocation dynamique =>liste chainée ?
 
+    initPile(&p, 130);
+
+    ///Trouver une structure pour les décades
+    num_decade=6;
+
+    //On calcul les composants exacts
+    calcul_composant_exact(filtre);
+
+    //On récupère la valeur du composant exact dans une variable temporaire
+    tmp_R=filtre->compo_exact.R_exact;
+
+    while((tmp_R!=0) && (i!=num_decade))
+    {
+        quotient=tmp_R/tab_deca[i]; //On récupère le quotient de la fraction pour savoir combien de résistance on mets pour la valeur de tab[i]
+
+        tmp_R=tmp_R%tab_deca[i]; //On récupère le reste de la fraction pour savoir combien d'ohms il nous reste
+
+        if(quotient!=0)
+        {
+            for(a=0 ; a<quotient ; a++)
+            {
+                //On rajoute le nombre de résistance nécessaires dans la pile
+                empiler(&p, tab_deca[i]);
+                //On incrémente la taille du tableau pour plus tard
+                filtre->compo_aproxi.taille_R_aproxi++;
+
+            }
+        }
+        i++;
+    }
+
+    //On alloue le tableau dynamique
+    filtre->compo_aproxi.R_aproxi=malloc(filtre->compo_aproxi.taille_R_aproxi*sizeof(int));
+
+    //On copie toutes les valeurs de la pile dans le tableau
+    for(i=0; i < filtre->compo_aproxi.taille_R_aproxi; i++)
+    {
+        filtre->compo_aproxi.R_aproxi[i]=p.tab[i];
+    }
+
+    //On affiche le tableau de résistances
+    ///Déplacer l'affichage des résistances dans l'interface ?
+    printf("======Affichage tableau de resistance====== \n");
+
+    for(i=0; i < filtre->compo_aproxi.taille_R_aproxi; i++)
+    {
+        printf("R%i=%i\n", i+1, filtre->compo_aproxi.R_aproxi[i]);
+    }
+
+    libererPile(&p);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

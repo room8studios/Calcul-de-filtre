@@ -8,9 +8,12 @@ typedef enum{FAUX, VRAI}Booleen;
 
 typedef struct
 {
-    resistance R_aproxi[13];
-    capacite C_aproxi[13];
-    inductance L_aproxi[13];
+    int *R_aproxi;
+    int taille_R_aproxi;
+    capacite *C_aproxi;
+    int taille_C_aproxi;
+    inductance *L_aproxi;
+    int taille_L_aproxi;
 }composants_aproxi;
 
 typedef struct
@@ -31,6 +34,8 @@ typedef struct
     composants_aproxi compo_aproxi;
     composants_exacts compo_exact;
 }filtre;
+
+typedef int Element;
 
 
 
