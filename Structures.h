@@ -1,19 +1,43 @@
 #ifndef STRUCTURES_INCLUDED
 #define STRUCTURES_INCLUDED
 
-#include "composants.h"
+/******Liste Chainee*******/
+struct cellule_composants_aproxi
+{
+   int X;
+   struct cellule_composants_aproxi *suivant;
+   struct cellule_composants_aproxi *precedent;
+};
+
+typedef struct cellule_composants_aproxi cellule_composants_aproxi;
+
+typedef struct
+{
+    cellule_composants_aproxi* pt_tete;
+}liste_composants_aproxi;
+
+/*******Type de composants******/
+typedef float resistance;
+typedef resistance resistance;
+typedef float capacite;
+typedef capacite capacite;
+typedef float inductance;
+typedef inductance inductance;
+typedef float frequence;
+typedef frequence frequence;
+typedef int ordre;
+typedef ordre ordre;
+typedef enum {PASSE_BAS, PASSE_HAUT, PASSE_BANDE, COUPE_BANDE}type_filtre; //passe_bas=0, passe_haut=1, passe_bande=2, coupe_bande=3
+
 
 typedef enum{AUCUN, RESISTANCE, CONDENSATEUR, BOBINE}Element_prioritaire;
 typedef enum{FAUX, VRAI}Booleen;
 
 typedef struct
 {
-    int *R_aproxi;
-    int taille_R_aproxi;
-    capacite *C_aproxi;
-    int taille_C_aproxi;
-    inductance *L_aproxi;
-    int taille_L_aproxi;
+    liste_composants_aproxi R_aproxi;
+    liste_composants_aproxi C_aproxi;
+    liste_composants_aproxi L_aproxi;
 }composants_aproxi;
 
 typedef struct

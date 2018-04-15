@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include "Structures.h"
-#include "composants.h"
 #include <math.h>
 
 void frequence_coupure(filtre *filtre);

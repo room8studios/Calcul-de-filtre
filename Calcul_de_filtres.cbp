@@ -43,12 +43,11 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Interface.h" />
-		<Unit filename="Pile.c">
+		<Unit filename="Liste_chainee.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Pile.h" />
+		<Unit filename="Liste_chainee.h" />
 		<Unit filename="Structures.h" />
-		<Unit filename="composants.h" />
 		<Unit filename="determination.c">
 			<Option compilerVar="CC" />
 		</Unit>

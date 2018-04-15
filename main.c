@@ -36,7 +36,5 @@ int main()
 
     montage_determine_exact(filtre);
 
-    Liberer_filtre(&filtre);
-
     return 0;
 }

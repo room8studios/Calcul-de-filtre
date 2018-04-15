@@ -1,4 +1,5 @@
 #include "determination.h"
+#include "Liste_chainee.h"
 
 void calcul_composant_exact(filtre *filtre)
 {
@@ -80,11 +81,6 @@ void calcul_composant_exact(filtre *filtre)
 void calcul_composant_standard(filtre *filtre)
 {
     int tab_deca[]={600,470,330,220,150,100}, i=0, a=0, tmp_R=0, quotient=0, num_decade; //tab_deca => Décade E6 ±10%
-    Pile p;
-    ///Faire attention si pile est pleine faire une condition ?
-    ///Faire ultra gaffe à la taille de la pile vérifier si on peut pas faire une pile avec allocation dynamique =>liste chainée ?
-
-    initPile(&p, 130);
 
     ///Trouver une structure pour les décades
     num_decade=6;
@@ -105,35 +101,17 @@ void calcul_composant_standard(filtre *filtre)
         {
             for(a=0 ; a<quotient ; a++)
             {
-                //On rajoute le nombre de résistance nécessaires dans la pile
-                empiler(&p, tab_deca[i]);
-                //On incrémente la taille du tableau pour plus tard
-                filtre->compo_aproxi.taille_R_aproxi++;
-
+                //On rajoute le nombre de résistance nécessaires dans la liste
+                ajouteEnTete(&filtre->compo_aproxi.R_aproxi, tab_deca[i]);
             }
         }
         i++;
     }
 
-    //On alloue le tableau dynamique
-    filtre->compo_aproxi.R_aproxi=malloc(filtre->compo_aproxi.taille_R_aproxi*sizeof(int));
+    //On affiche la liste de résistances
+    afficheListe_R(filtre->compo_aproxi.R_aproxi);
 
-    //On copie toutes les valeurs de la pile dans le tableau
-    for(i=0; i < filtre->compo_aproxi.taille_R_aproxi; i++)
-    {
-        filtre->compo_aproxi.R_aproxi[i]=p.tab[i];
-    }
-
-    //On affiche le tableau de résistances
-    ///Déplacer l'affichage des résistances dans l'interface ?
-    printf("======Affichage tableau de resistance====== \n");
-
-    for(i=0; i < filtre->compo_aproxi.taille_R_aproxi; i++)
-    {
-        printf("R%i=%i\n", i+1, filtre->compo_aproxi.R_aproxi[i]);
-    }
-
-    libererPile(&p);
+    detruireListe(&filtre->compo_aproxi.R_aproxi);
 };
 
 

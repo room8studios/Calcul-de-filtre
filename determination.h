@@ -4,9 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "composants.h"
 #include "Structures.h"
-#include "Pile.h"
+#include "Liste_chainee.h"
 
 
 void calcul_composant_exact(filtre *filtre);

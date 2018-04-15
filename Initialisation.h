@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Structures.h"
+#include "Liste_chainee.h"
 
 void Initialisation_filtre(filtre *filtre);
 
