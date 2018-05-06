@@ -162,7 +162,7 @@ void frequence_coupure(filtre *filtre)
     {
         printf("Pour bientot !");
     }
-};
+}
 
 void resistance_equivalente(resistance R)
 {

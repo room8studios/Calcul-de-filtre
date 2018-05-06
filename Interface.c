@@ -9,7 +9,7 @@ void saisie_filtre_souhaite(filtre *filtre)
     printf("PASSE_BAS=0 \n PASSE_HAUT=1 \n PASEE_BANDE=2 \n");
     scanf("%i", &filtre->type_filtre);
 
-};
+}
 
 resistance saisie_resistances(int i)
 {
@@ -31,7 +31,7 @@ resistance saisie_resistances(int i)
     }while(booleen==VRAI);
 
     return R;
-};
+}
 
 capacite saisie_condensateur(int i)
 {
@@ -53,7 +53,7 @@ capacite saisie_condensateur(int i)
     }while(booleen==VRAI);
 
     return C;
-};
+}
 
 inductance saisie_inductance(int i)
 {
@@ -75,7 +75,7 @@ inductance saisie_inductance(int i)
     }while(booleen==VRAI);
 
     return L;
-};
+}
 
 void montage_choisi(filtre filtre)
 {

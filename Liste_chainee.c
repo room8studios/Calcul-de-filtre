@@ -83,7 +83,7 @@ void afficheListe_R(liste_composants_aproxi L)
     }
     else
     {
-        printf("\n pas de composant\n");
+        printf("\n Aucune resistances (standards)\n");
     }
 }
 
@@ -109,7 +109,7 @@ void afficheListe_L(liste_composants_aproxi L)
     }
     else
     {
-        printf("\n pas de composant\n");
+        printf("\n Aucune inductances (standards)\n");
     }
 }
 
@@ -135,6 +135,6 @@ void afficheListe_C(liste_composants_aproxi L)
     }
     else
     {
-        printf("\n pas de composant\n");
+        printf("\n Aucun condensateurs (standards)\n");
     }
 }
