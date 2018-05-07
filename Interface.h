@@ -2,6 +2,7 @@
 #define INTERFACE_H_INCLUDED
 
 #include <stdio.h>
+#include <math.h>
 #include "Structures.h"
 
 /**

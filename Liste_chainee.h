@@ -22,17 +22,19 @@ int estVideListe(liste_composants_aproxi *L);
 /**
 * @brief Creation cellule de la liste
 *
-* @param composantAP Entier
+* @param valeur Float
+* @param puis_10 Entier
 */
-cellule_composants_aproxi *creerCellule(int composantAP);
+cellule_composants_aproxi *creerCellule(float valeur, int puis_10);
 
 /**
 * @brief Ajout d'une cellule en tete de liste
 *
 * @param L Pointeur sur liste composants aproximatifs
-* @param X Entier
+* @param X Float
+* @param puis_10 Entier
 */
-void ajouteEnTete(liste_composants_aproxi *L, int X);
+void ajouteEnTete(liste_composants_aproxi *L, float X, int puis_10);
 
 /**
 * @brief Destruction de la liste

@@ -1,6 +1,6 @@
 #include "Liste_chainee.h"
 
-cellule_composants_aproxi* creerCellule(int composantAP);
+cellule_composants_aproxi* creerCellule(float valeur, int puis_10);
 
 void Init_Liste(liste_composants_aproxi *L)
 {
@@ -9,24 +9,25 @@ void Init_Liste(liste_composants_aproxi *L)
 
 int estVideListe(liste_composants_aproxi *L)
 {
-    //Retourne 1 si vrifie 0 sinon
+    //Retourne 1 si verifie 0 sinon
     return L->pt_tete==NULL;
 }
 
-cellule_composants_aproxi* creerCellule(int composantAP)
+cellule_composants_aproxi* creerCellule(float valeur, int puis_10)
 {
-    //On cre la cellule
+    //On cree la cellule
     cellule_composants_aproxi *cell;
     cell=(cellule_composants_aproxi*) malloc(sizeof(cellule_composants_aproxi));
-    cell->X=composantAP;
+    cell->X=valeur;
+    cell->pui_10=puis_10;
     cell->suivant=NULL;
     return cell;
 }
 
 
-void ajouteEnTete(liste_composants_aproxi *L, int X)
+void ajouteEnTete(liste_composants_aproxi *L, float X, int puis_10)
 {
-    cellule_composants_aproxi *p=creerCellule(X);
+    cellule_composants_aproxi *p=creerCellule(X, puis_10);
 
     //On vrifie si la liste est vide pour affecter les pointeurs
     if(estVideListe(L)==1)
@@ -69,9 +70,10 @@ void afficheListe_R(liste_composants_aproxi L)
     //On vrifie si la liste est vide pour afficher
     if(estVideListe(&L)==0)
     {
+        printf("========Resistances standards========\n");
         while (p!=NULL)
         {
-            printf("R%i=%i\n", i+1, p->X);
+            printf("R%i=%lf*10 puissance %i\n", i+1, p->X, p->pui_10);
 
             p=p->suivant;
 
@@ -95,9 +97,10 @@ void afficheListe_L(liste_composants_aproxi L)
     //On vrifie si la liste est vide pour afficher
     if(estVideListe(&L)==0)
     {
+        printf("========Inductances standards========\n");
         while (p!=NULL)
         {
-            printf("L%i=%i\n", i+1, p->X);
+            printf("L%i=%lf*10 puissance %i\n", i+1, p->X, p->pui_10);
 
             p=p->suivant;
 
@@ -121,9 +124,11 @@ void afficheListe_C(liste_composants_aproxi L)
     //On vrifie si la liste est vide pour afficher
     if(estVideListe(&L)==0)
     {
+        printf("========Condensateurs standards========\n");
         while (p!=NULL)
         {
-            printf("C%i=%i\n", i+1, p->X);
+
+            printf("C%i=%lf*10 puissance %i\n", i+1, p->X, p->pui_10);
 
             p=p->suivant;
 

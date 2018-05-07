@@ -231,19 +231,19 @@ void montage_determine_exact(filtre filtre)
             case PASSE_BAS :
             {
                 printf("               ---------------- \n");
-                printf("---------------|   R=%f Ohms  |----------------------------- \n", filtre.compo_exact.R_exact);
-                printf("|              ----------------             |              | \n");
-                printf("|                                           |              | \n");
-                printf("|                                           |              | \n");
-                printf("|                                       ----------         | \n");
-                printf("|                                       |        |         | \n");
-                printf("Ve                                      | C=%f F |         Vs \n", filtre.compo_exact.C_exact);
-                printf("|                                       |        |         | \n");
-                printf("|                                       ----------         | \n");
-                printf("|                                           |              | \n");
-                printf("|                                           |              | \n");
-                printf("|                                           |              | \n");
-                printf("------------------------------------------------------------ \n");
+                printf("---------------|   R=%f Ohms  |--------------------------------- \n", filtre.compo_exact.R_exact);
+                printf("|              ----------------             |                  | \n");
+                printf("|                                           |                  | \n");
+                printf("|                                           |                  | \n");
+                printf("|                                   ------------------         | \n");
+                printf("|                                   |                |         | \n");
+                printf("Ve                                  | C=%f*10pui%i F |         Vs \n", filtre.compo_exact.C_exact*pow(10, -filtre.compo_exact.C_exact_pui), filtre.compo_exact.C_exact_pui);
+                printf("|                                   |                |         | \n");
+                printf("|                                   ------------------         | \n");
+                printf("|                                           |                  | \n");
+                printf("|                                           |                  | \n");
+                printf("|                                           |                  | \n");
+                printf("---------------------------------------------------------------- \n");
 
                 break;
             }

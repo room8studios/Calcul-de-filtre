@@ -14,7 +14,9 @@ void Initialisation_filtre(filtre *filtre)
     Init_Liste(&filtre->compo_aproxi.R_aproxi);
     filtre->R_dispo.decade=6;
     filtre->R_dispo.pui_de_10_max=6;
-    filtre->C_dispo.decade=1; //Inutile dans la structure mais juste pour initialiser
-    filtre->C_dispo.pui_de_10_max=6;
+    filtre->C_dispo.decade=24; //On a 24 valeurs dans la decade
+    filtre->C_dispo.pui_de_10_max=-12;
+    filtre->L_dispo.decade=24; //On a 24 valeurs dans la decade
+    filtre->L_dispo.pui_de_10_max=-12;
 }
 

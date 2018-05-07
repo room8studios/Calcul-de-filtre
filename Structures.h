@@ -4,7 +4,8 @@
 /******Liste Chainee*******/
 struct cellule_composants_aproxi
 {
-   int X;
+   float X;
+   int pui_10;
    struct cellule_composants_aproxi *suivant;
    struct cellule_composants_aproxi *precedent;
 };
@@ -46,7 +47,9 @@ typedef struct
 {
     resistance R_exact;
     capacite C_exact;
+    int C_exact_pui;
     inductance L_exact;
+    int L_exact_pui;
 }composants_exacts;
 
 /******Structure composants disponible*****/
@@ -73,7 +76,7 @@ typedef struct
 
 }filtre;
 
-typedef int Element; //Il sert vraiment ?
+typedef int Element; ///Il sert vraiment ?
 
 
 /*struct deca_R
