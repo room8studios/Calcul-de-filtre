@@ -143,3 +143,25 @@ void afficheListe_C(liste_composants_aproxi L)
         printf("\n Aucun condensateurs (standards)\n");
     }
 }
+
+float Somme_liste(liste_composants_aproxi L)
+{
+    int i=0;
+    float somme=0;
+    cellule_composants_aproxi *p=L.pt_tete;
+
+    //On verifie si la liste est vide pour sommer
+    if(estVideListe(&L)==0)
+    {
+        while (p!=NULL)
+        {
+            somme=somme+p->X;
+            //printf("somme %lf", somme);
+            p=p->suivant;
+
+            i++;
+        }
+
+    }
+    return somme;
+}

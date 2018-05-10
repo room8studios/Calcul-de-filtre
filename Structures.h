@@ -38,14 +38,18 @@ typedef enum{FAUX, VRAI}Booleen;
 typedef struct
 {
     liste_composants_aproxi R_aproxi;
+    float R_pourc_erreur;
     liste_composants_aproxi C_aproxi;
+    float C_pourc_erreur;
     liste_composants_aproxi L_aproxi;
+    float L_pourc_erreur;
 }composants_aproxi;
 
 /******Structure composants exacts******/
 typedef struct
 {
     resistance R_exact;
+    int R_exact_pui;
     capacite C_exact;
     int C_exact_pui;
     inductance L_exact;

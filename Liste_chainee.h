@@ -16,6 +16,7 @@ void Init_Liste(liste_composants_aproxi *L);
 * @brief Verification si la liste est vide
 *
 * @param L Pointeur sur liste composants aproximatifs
+* @return Entier
 */
 int estVideListe(liste_composants_aproxi *L);
 
@@ -63,5 +64,13 @@ void afficheListe_L(liste_composants_aproxi L);
 * @param L Liste composants aproximatifs
 */
 void afficheListe_C(liste_composants_aproxi L);
+
+/**
+* @brief Somme les elements de la liste
+*
+* @param L Liste composants aproximatifs
+* @return Float
+*/
+float Somme_liste(liste_composants_aproxi L);
 
 #endif // LISTE_CHAINEE_H_INCLUDED
