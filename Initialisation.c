@@ -11,6 +11,7 @@ void Initialisation_filtre(filtre *filtre)
     filtre->compo_exact.R_exact=0;
     filtre->compo_exact.C_exact=0;
     filtre->compo_exact.L_exact=0;
+    filtre->mode_resoulution=1;
 
     filtre->compo_exact.R_exact_pui=0;
     filtre->compo_exact.C_exact_pui=0;

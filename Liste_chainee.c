@@ -71,9 +71,10 @@ void afficheListe_R(liste_composants_aproxi L)
     if(estVideListe(&L)==0)
     {
         printf("========Resistances standards========\n");
+        printf("Pour obtenir la resistance equivalente il est necessaire de mettre les resistances en serie\n");
         while (p!=NULL)
         {
-            printf("R%i=%lf*10 puissance %i\n", i+1, p->X, p->pui_10);
+            printf("R%i=%lf*10 puissance %i\n", i+1, p->X*pow(10, -p->pui_10), p->pui_10);
 
             p=p->suivant;
 
@@ -85,7 +86,7 @@ void afficheListe_R(liste_composants_aproxi L)
     }
     else
     {
-        printf("\n Aucune resistances (standards)\n");
+        printf("\n Aucune resistances (standards)\n\n");
     }
 }
 
@@ -98,6 +99,7 @@ void afficheListe_L(liste_composants_aproxi L)
     if(estVideListe(&L)==0)
     {
         printf("========Inductances standards========\n");
+        printf("Pour obtenir l'inductance equivalente il est necessaire de mettre les inductances en serie\n");
         while (p!=NULL)
         {
             printf("L%i=%lf*10 puissance %i\n", i+1, p->X, p->pui_10);
@@ -112,7 +114,7 @@ void afficheListe_L(liste_composants_aproxi L)
     }
     else
     {
-        printf("\n Aucune inductances (standards)\n");
+        printf("\n Aucune inductances (standards)\n\n");
     }
 }
 
@@ -125,6 +127,7 @@ void afficheListe_C(liste_composants_aproxi L)
     if(estVideListe(&L)==0)
     {
         printf("========Condensateurs standards========\n");
+        printf("Pour obtenir le condensateur equivalent il est necessaire de mettre les condensateurs en parallele\n");
         while (p!=NULL)
         {
 
@@ -140,7 +143,7 @@ void afficheListe_C(liste_composants_aproxi L)
     }
     else
     {
-        printf("\n Aucun condensateurs (standards)\n");
+        printf("\n Aucun condensateurs (standards)\n\n");
     }
 }
 

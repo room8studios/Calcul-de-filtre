@@ -82,9 +82,6 @@ void calcul_composant_exact(filtre *filtre)
 
 void calcul_composant_standard(filtre *filtre)
 {
-    //On calcul les composants exacts
-    calcul_composant_exact(filtre);
-
     /**************Calcul des condensateurs standards************/
     calcul_C_standard(filtre);
 
@@ -112,8 +109,6 @@ void calcul_R_standard(filtre *filtre)
     int i=0, a=0;
     int pui_10=0, pui_max=filtre->R_dispo.pui_de_10_max /*Puissance maximale necessaire*/;
     int tmp_R=0, quotient=0 /*Pour resistances*/;
-
-    pui_max=filtre->R_dispo.pui_de_10_max;
 
     ///Attention a mettre les decades dans l'ordre decroissant pour avoir les plus grandes valeurs choisis en 1er
     int deca_E3[]={470,220,100}; //Decade E3 ±20%
@@ -450,7 +445,6 @@ void calcul_pui_composant(filtre *filtre)
             {
                 tmp_C=tmp_C*10;
                 filtre->compo_exact.C_exact_pui--;
-                printf("$$$$$$$$$$$$$puissance c %i\n",filtre->compo_exact.C_exact_pui);
             }
         }
     }
@@ -497,7 +491,6 @@ void calcul_pui_composant(filtre *filtre)
             {
                 tmp_R=tmp_R/10;
                 filtre->compo_exact.R_exact_pui++;
-                printf("puissance R %i\n",filtre->compo_exact.R_exact_pui);
             }
         }
         else

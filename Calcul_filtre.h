@@ -10,6 +10,6 @@
 *
 * @param filtre un pointeur sur filtre
 */
-void frequence_coupure(filtre *filtre);
+void frequences_particulieres(filtre *filtre);
 
 #endif // CALCUL_FILTRE_H_INCLUDED

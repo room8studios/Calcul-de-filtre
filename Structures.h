@@ -77,19 +77,12 @@ typedef struct
     composants_dispo L_dispo;
     composants_aproxi compo_aproxi;
     composants_exacts compo_exact;
+    int mode_resoulution;
 
 }filtre;
 
 typedef int Element; ///Il sert vraiment ?
 
-
-/*struct deca_R
-{
-    int deca_E3[]={100,220,470}; //Decade E3 ±20%
-    int deca_E6[]={600,470,330,220,150,100}; //Decade E6 ±10%
-    int deca_E12[]={100,120,150,180,220,270,330,390,470,560,680,820}; //Decade E12 ±10%
-    int deca_E24[]={100,110,120,130,150,160,180,200,220,240,270,300,330,360,390,430,470,510,560,620,680,750,820,910}; //Decade E24 ±5%
-};*/
 
 
 
